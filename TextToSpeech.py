@@ -11,7 +11,7 @@ from PyQt5.QtCore import Qt, QUrl
 
 from gtts import gTTS
 from langdetect import detect
-# Test git again
+# Test git again ######
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
