@@ -10,6 +10,7 @@ from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtCore import Qt, QUrl
 
 from gtts import gTTS
+from langdetect import detect
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -88,8 +89,9 @@ class MainWindow(QMainWindow):
         text = self.textEdit.toPlainText()
         if text:
             if (self.btnPlayPause.text() == "Play"):
+                lang = detect(text)
                 try:
-                    tts = gTTS(text, lang='vi')
+                    tts = gTTS(text, lang=lang)
                     tts.save(self.tempAudioPath)
                     self.player.setMedia(self.mediaContent)
                 except Exception as e:
